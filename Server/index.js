@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 //routes
 app.use("/test", require("./routes/index"));
 app.use("/pings", require("./routes/ping"));
-// app.use("/users", require("./routes/users"));
+app.use("/users", require("./routes/user"));
 
 //404 route
 app.get("*", (req, res) => {
