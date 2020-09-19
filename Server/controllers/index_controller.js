@@ -14,6 +14,8 @@ module.exports.createDummyUser = async (req, res) => {
     age: 18,
     status: "available",
     vCount: 0,
+    latitude: 20.313,
+    longitude: 34.332,
   });
   await user.save();
   return sendSuccess(res, "Added dummy User!");

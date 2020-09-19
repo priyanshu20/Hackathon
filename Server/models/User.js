@@ -9,10 +9,8 @@ const UserSchema = new mongoose.Schema(
     age: { type: Number },
     status: { type: String, required: true }, //available,busy
     vCount: { type: Number, required: true }, //number of tasks completed
-    lastLocation: {
-      type: { type: String, default: "MultiPoint" },
-      coordinates: [[{ type: Number }]],
-    },
+    latitude: { type: Number, required: true },
+    longitude: { type: Number, required: true },
   },
   { timestamps: true }
 );
