@@ -28,7 +28,7 @@ module.exports.addPing = async (req, res) => {
     forKids,
     reward,
     status: "pending",
-    uid: req.user.id,
+    uid: req.user._id,
   });
   await ping.save();
   return sendSuccess(res, "Ping saved");
