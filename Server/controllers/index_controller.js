@@ -6,17 +6,20 @@ module.exports.index = (req, res) => {
   return sendSuccess(res, "Welcome to the API!");
 };
 
-module.exports.createDummyUser = async (req, res) => {
+module.exports.createUser = async (req, res) => {
+  let { name, email, password, age, latitude, longitude } = req.body;
+  let exists = await User.find({ email });
+  if (exists) return sendError(res, "User already exists", BAD_REQUEST);
   let user = new User({
-    name: "Dummy",
-    email: "dummy@dummy.com",
-    password: "password",
-    age: 18,
-    status: "available",
+    name,
+    email,
+    password,
+    age,
+    status: "busy",
     vCount: 0,
-    latitude: 20.313,
-    longitude: 34.332,
+    latitude,
+    longitude,
   });
   await user.save();
-  return sendSuccess(res, "Added dummy User!");
+  return sendSuccess(res, "User Created");
 };
