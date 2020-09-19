@@ -2,4 +2,5 @@
     <string name="app_name">Hackathon Help App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text1"><![CDATA[Get Started with us to volunteer help to one in need & get the same needed.......]]></string>
 </resources>
