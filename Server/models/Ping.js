@@ -12,6 +12,7 @@ const PingSchema = new mongoose.Schema(
     reward: { type: String }, // Only applicable on tasks for kids
     uid: { type: ObjectId, ref: "User", required: true },
     volunteers: [{ type: ObjectId, ref: "User" }],
+    status: { type: String, required: true }, //pending,completed,occupied
   },
   { timestamps: true }
 );

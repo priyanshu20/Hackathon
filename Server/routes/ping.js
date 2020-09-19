@@ -3,6 +3,8 @@ const {
   getPings,
   addPing,
   getEmergencies,
+  updatePing,
+  deletePing,
 } = require("../controllers/ping_controller");
 const { isLoggedIn } = require("../config/authcheck");
 const router = express.Router();
@@ -14,5 +16,7 @@ const { catchErrors } = require("../utilities/helpers");
 router.get("/", catchErrors(isLoggedIn), catchErrors(getPings));
 router.post("/", catchErrors(isLoggedIn), catchErrors(addPing));
 router.get("/emergency", catchErrors(isLoggedIn), catchErrors(getEmergencies));
+router.put("/", catchErrors(isLoggedIn), catchErrors(updatePing));
+router.delete("/", catchErrors(isLoggedIn), catchErrors(deletePing));
 
 module.exports = router;
