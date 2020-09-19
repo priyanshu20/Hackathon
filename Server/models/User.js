@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+mongoose.set("useCreateIndex", true);
+
 const bcrypt = require("bcryptjs");
 
 const UserSchema = new mongoose.Schema(
@@ -9,8 +11,10 @@ const UserSchema = new mongoose.Schema(
     age: { type: Number },
     status: { type: String, required: true }, //available,busy
     vCount: { type: Number, required: true }, //number of tasks completed
-    latitude: { type: Number, required: true },
-    longitude: { type: Number, required: true },
+    location: {
+      type: { type: String },
+      coordinates: [{ type: Number }],
+    },
   },
   { timestamps: true }
 );
@@ -24,6 +28,8 @@ UserSchema.pre("save", async function (next) {
   this.password = hash;
   next();
 });
+
+UserSchema.index({ location: "2dsphere" });
 
 UserSchema.methods.isValidPwd = async function (password) {
   let isMatchPwd = await bcrypt.compare(password, this.password);
