@@ -32,8 +32,15 @@ app.get("*", (req, res) => {
   return sendSuccess(res, "API NOT FOUND!");
 });
 
-//setting up server
-app.listen(PORT, (err) => {
-  if (err) console.log("Error in running Server.");
-  else console.log(`Server is up and running on Port ${PORT}`);
-});
+const http = require("http");
+const server = http.createServer(app);
+
+//starting up server
+(async () => {
+  try {
+    await server.listen(PORT);
+    console.info(`\nServer is up and running on Port ${PORT}`);
+  } catch (err) {
+    console.info("Error in running server.");
+  }
+})();
