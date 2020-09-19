@@ -13,8 +13,10 @@ module.exports.createUser = async (req, res) => {
     age,
     status: "busy",
     vCount: 0,
-    latitude,
-    longitude,
+    location: {
+      type: "Point",
+      coordinates: [longitude, latitude],
+    },
   });
   await user.save();
   return sendSuccess(res, "User Created");
@@ -43,8 +45,7 @@ module.exports.updateUser = async (req, res) => {
   if (password) user.password = password;
   if (age) user.age = age;
   if (status) user.status = status;
-  if (longitude) user.longitude = longitude;
-  if (latitude) user.latitude = latitude;
+  if (longitude) user.location.coordinates = [longitude, latitude];
 
   await user.save();
   return sendSuccess(res, "User details updated");

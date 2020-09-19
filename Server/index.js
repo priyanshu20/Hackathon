@@ -2,6 +2,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+mongoose.set("useCreateIndex", true);
+
 const path = require("path");
 const { sendSuccess } = require("./utilities/helpers");
 const { PORT } = require("./config/index");

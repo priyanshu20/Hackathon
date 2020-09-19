@@ -1,5 +1,6 @@
 const { sendError, sendSuccess } = require("../utilities/helpers");
 
+const User = require("../models/User");
 const Ping = require("../models/Ping");
 const { NOT_FOUND } = require("../utilities/statusCodes");
 
@@ -19,11 +20,11 @@ module.exports.addPing = async (req, res) => {
     reward = "Blessing";
   }
   if (!tag === "community") vRequired = 1;
+  if (tag === "emergency") description = "Please take action quickly";
   let ping = new Ping({
     tag,
     description,
-    latitude,
-    longitude,
+    location: { type: "Point", coordinates: [longitude, latitude] },
     vRequired,
     forKids,
     reward,
@@ -62,4 +63,23 @@ module.exports.deletePing = async (req, res) => {
   if (!ping) return sendError(res, "Ping not found", NOT_FOUND);
   await ping.remove();
   return sendSuccess(res, "Ping was deleted");
+};
+
+module.exports.volunteersNearBy = async (req, res) => {
+  let pid = req.params.pid;
+  let ping = await Ping.findById(pid);
+  if (!ping) return sendError(res, "Ping not found", NOT_FOUND);
+  let longitude = ping.location.coordinates[0];
+  let latitude = ping.location.coordinates[1];
+  let volunteers = await User.find({
+    location: {
+      $near: {
+        $geometry: {
+          type: "Point",
+          coordinates: [Number(longitude), Number(latitude)],
+        },
+      },
+    },
+  });
+  return sendSuccess(res, volunteers);
 };

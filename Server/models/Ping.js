@@ -1,13 +1,16 @@
 const mongoose = require("mongoose");
 const ObjectId = mongoose.Schema.Types.ObjectId;
+mongoose.set("useCreateIndex", true);
 
 const PingSchema = new mongoose.Schema(
   {
     tag: { type: String, required: true }, //emergency,general,community
     description: { type: String, required: true },
     vRequired: { type: Number },
-    longitude: { type: Number, required: true },
-    latitude: { type: Number, required: true },
+    location: {
+      type: { type: String },
+      coordinates: [{ type: Number }],
+    },
     forKids: { type: Boolean, required: true },
     reward: { type: String }, // Only applicable on tasks for kids
     uid: { type: ObjectId, ref: "User", required: true },
@@ -16,5 +19,7 @@ const PingSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+PingSchema.index({ location: "2dsphere" });
 
 module.exports = Ping = mongoose.model("Ping", PingSchema);
