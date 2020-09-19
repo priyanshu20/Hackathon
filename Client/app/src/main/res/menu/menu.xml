@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_opt1"
+        android:enabled="true"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/list"
+        android:iconTint="@color/colorPrimaryDark"
+        android:icon="@drawable/ic_group_8"
+        android:title="List" />
+
+    <item
+        android:id="@+id/Settings"
+        android:icon="@drawable/ic_settings"
+        android:iconTint="@color/colorPrimaryDark"
+        android:title="Profile" />
+</menu>

@@ -2,6 +2,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+mongoose.set("useCreateIndex", true);
+
 const path = require("path");
 const { sendSuccess } = require("./utilities/helpers");
 const { PORT } = require("./config/index");
@@ -25,15 +27,23 @@ app.use((req, res, next) => {
 
 //routes
 app.use("/test", require("./routes/index"));
-// app.use("/users", require("./routes/users"));
+app.use("/pings", require("./routes/ping"));
+app.use("/users", require("./routes/user"));
 
 //404 route
 app.get("*", (req, res) => {
   return sendSuccess(res, "API NOT FOUND!");
 });
 
-//setting up server
-app.listen(PORT, (err) => {
-  if (err) console.log("Error in running Server.");
-  else console.log(`Server is up and running on Port ${PORT}`);
-});
+const http = require("http");
+const server = http.createServer(app);
+
+//starting up server
+(async () => {
+  try {
+    await server.listen(PORT);
+    console.info(`\nServer is up and running on Port ${PORT}`);
+  } catch (err) {
+    console.info("Error in running server.");
+  }
+})();
