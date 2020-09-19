@@ -2,7 +2,6 @@ package com.dsckiet.hackathonhelpapp.screen
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.SurfaceControl
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -12,7 +11,7 @@ import com.dsckiet.hackathonhelpapp.databinding.FragmentVolunteerBinding
 
 
 class VolunteerFragment : Fragment() {
-    private lateinit var binding:FragmentVolunteerBinding
+    private lateinit var binding: FragmentVolunteerBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

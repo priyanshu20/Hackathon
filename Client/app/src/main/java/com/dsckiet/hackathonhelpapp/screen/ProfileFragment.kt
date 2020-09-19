@@ -13,7 +13,7 @@ import com.dsckiet.hackathonhelpapp.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
     private lateinit var navController: NavController
-    private lateinit var binding:FragmentProfileBinding
+    private lateinit var binding: FragmentProfileBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
