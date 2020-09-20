@@ -180,7 +180,7 @@ class MainActivity : AppCompatActivity() {
             callApi.enqueue(object : Callback<UpdateUserResponse> {
                 override fun onFailure(call: Call<UpdateUserResponse>, t: Throwable) {
                     Log.d("Failure", t.message.toString())
-                    Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_SHORT).show()
+
                 }
 
                 override fun onResponse(
@@ -188,9 +188,8 @@ class MainActivity : AppCompatActivity() {
                     response: Response<UpdateUserResponse>
                 ) {
                     Log.d("Success", response.toString())
-                    if (response.code() == 200)
-                        Toast.makeText(this@MainActivity, "Coordinates updated", Toast.LENGTH_SHORT)
-                            .show()
+
+
                 }
 
             })
