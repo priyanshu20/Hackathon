@@ -36,7 +36,7 @@ class HelpVaultFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        binding.arrow.setOnClickListener {
+        binding.back.setOnClickListener {
             navController.popBackStack()
         }
         val lat=arguments?.getDouble("lat")

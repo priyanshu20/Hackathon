@@ -118,7 +118,7 @@
                                 android:layout_alignParentEnd="true"
                                 android:layout_marginLeft="16dp"
                                 android:layout_marginRight="32dp"
-                                android:text="4"
+                                android:text="0"
                                 android:textColor="@color/textColor"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />

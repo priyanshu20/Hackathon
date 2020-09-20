@@ -253,15 +253,6 @@
                             android:layout_marginTop="24dp"
                             android:background="@drawable/gradient_card">
 
-                            <ImageView
-                                android:id="@+id/money_icon"
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginRight="12dp"
-                                android:src="@drawable/ic_money" />
-
                             <TextView
                                 android:id="@+id/redeem_title"
                                 android:layout_width="wrap_content"
@@ -281,8 +272,7 @@
                                 android:layout_marginRight="8dp"
                                 android:layout_marginTop="8dp"
                                 android:fontFamily="@font/sen_reg"
-                                android:layout_toLeftOf="@id/money_icon"
-                                android:text="Get your credits encashed for exclusive stuff"
+                                android:text="Redeem your credits to get exclusive prizes"
                                 android:textColor="#ffffff" />
                         </RelativeLayout>
                     </RelativeLayout>
