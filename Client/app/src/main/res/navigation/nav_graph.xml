@@ -14,5 +14,20 @@
     <fragment
         android:id="@+id/volunteerFragment"
         android:name="com.dsckiet.hackathonhelpapp.screen.VolunteerFragment"
-        android:label="VolunteerFragment" />
+        android:label="VolunteerFragment" >
+        <action
+            android:id="@+id/action_volunteerFragment_to_getVolunteerFragment2"
+            app:destination="@id/getVolunteerFragment2" />
+        <action
+            android:id="@+id/action_volunteerFragment_to_helpVaultFragment"
+            app:destination="@id/helpVaultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/getVolunteerFragment2"
+        android:name="com.dsckiet.hackathonhelpapp.screen.GetVolunteerFragment"
+        android:label="GetVolunteerFragment" />
+    <fragment
+        android:id="@+id/helpVaultFragment"
+        android:name="com.dsckiet.hackathonhelpapp.screen.HelpVaultFragment"
+        android:label="HelpVaultFragment" />
 </navigation>

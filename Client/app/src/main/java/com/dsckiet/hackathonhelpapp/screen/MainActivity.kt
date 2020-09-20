@@ -17,6 +17,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.dsckiet.hackathonhelpapp.Constants
 import com.dsckiet.hackathonhelpapp.R
 import com.dsckiet.hackathonhelpapp.databinding.ActivityMainBinding
@@ -25,6 +27,7 @@ import com.dsckiet.hackathonhelpapp.model.UpdateUserResponse
 import com.dsckiet.hackathonhelpapp.network.AppNetwork
 import com.dsckiet.hackathonhelpapp.services.LocationService
 import com.google.android.gms.location.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -42,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        bottomNav()
         val intent = Intent(this, LocationService::class.java)
         intent.action = LocationService.ACTION_START_FOREGROUND_SERVICE
 
@@ -144,42 +148,53 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    private val mLocationCallback = object : LocationCallback() {
-        @SuppressLint("LogNotTimber")
-        override fun onLocationResult(locationResult: LocationResult) {
-            val mLastLocation: Location = locationResult.lastLocation
-            Constants.latitude = mLastLocation.latitude
-            Log.d("Current Latitude", "${Constants.latitude}")
 
-            Constants.longitude = mLastLocation.longitude
-            Log.d("Current Longitude", "${Constants.longitude}")
-            updateUser()
+        private val mLocationCallback = object : LocationCallback() {
+            @SuppressLint("LogNotTimber")
+            override fun onLocationResult(locationResult: LocationResult) {
+                val mLastLocation: Location = locationResult.lastLocation
+                Constants.latitude = mLastLocation.latitude
+                Log.d("Current Latitude", "${Constants.latitude}")
+
+                Constants.longitude = mLastLocation.longitude
+                Log.d("Current Longitude", "${Constants.longitude}")
+                updateUser()
+
+            }
+        }
+
+        private fun bottomNav() {
+
+            val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
+            val navController = findNavController(R.id.fragment)
+            bottomNav.setupWithNavController(navController)
+
 
         }
+
+        fun updateUser() {
+            val uid = "5f66098e68d68139f8156ba2"
+            val updateUserResponse = UpdateUserBody(uid, Constants.latitude, Constants.longitude)
+            val retrofitService = AppNetwork.getClient(this@MainActivity)
+            val callApi = retrofitService.updateUser(updateUserResponse)
+            callApi.enqueue(object : Callback<UpdateUserResponse> {
+                override fun onFailure(call: Call<UpdateUserResponse>, t: Throwable) {
+                    Log.d("Failure", t.message.toString())
+                    Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onResponse(
+                    call: Call<UpdateUserResponse>,
+                    response: Response<UpdateUserResponse>
+                ) {
+                    Log.d("Success", response.toString())
+                    if (response.code() == 200)
+                        Toast.makeText(this@MainActivity, "Coordinates updated", Toast.LENGTH_SHORT)
+                            .show()
+                }
+
+            })
+        }
+
+
     }
-fun updateUser()
-{
-    val uid="5f66098e68d68139f8156ba2"
-    val updateUserResponse=UpdateUserBody(uid,Constants.latitude,Constants.longitude)
-    val retrofitService= AppNetwork.getClient(this@MainActivity)
-    val callApi=retrofitService.updateUser(updateUserResponse)
-    callApi.enqueue(object : Callback<UpdateUserResponse>{
-        override fun onFailure(call: Call<UpdateUserResponse>, t: Throwable) {
-            Log.d("Failure",t.message.toString())
-            Toast.makeText(this@MainActivity,t.message,Toast.LENGTH_SHORT).show()
-        }
-
-        override fun onResponse(
-            call: Call<UpdateUserResponse>,
-            response: Response<UpdateUserResponse>
-        ) {
-            Log.d("Success",response.toString())
-            if(response.code()==200)
-           Toast.makeText(this@MainActivity,"Coordinates updated",Toast.LENGTH_SHORT).show()
-        }
-
-    })
-}
-
-
-}

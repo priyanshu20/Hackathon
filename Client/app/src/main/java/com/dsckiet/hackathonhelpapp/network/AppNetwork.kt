@@ -9,7 +9,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object AppNetwork {
 
-    private const val BASE_URL = "https://eaeae1468737.ngrok.io"
+    private const val BASE_URL = "https://fb1343a96fa2.ngrok.io"
 
     fun getClient(context: Context): AppNetworkInterface {
         val moshi = Moshi.Builder()

@@ -7,15 +7,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.dsckiet.hackathonhelpapp.R
-import com.dsckiet.hackathonhelpapp.adapter.EmergencyHelpAdapter
-import com.dsckiet.hackathonhelpapp.databinding.FragmentHomeBinding
+import com.dsckiet.hackathonhelpapp.databinding.FragmentHelpVaultBinding
 
 
-class HomeFragment : Fragment() {
-    private lateinit var navController: NavController
-    private lateinit var binding: FragmentHomeBinding
-
+class HelpVaultFragment : Fragment() {
+    lateinit var binding: FragmentHelpVaultBinding
+    lateinit var navController: NavController
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,18 +23,17 @@ class HomeFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(
                 inflater,
-                R.layout.fragment_home, container, false
+                R.layout.fragment_help_vault, container, false
             )
         return binding.root
 
-
-
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        binding.emergencyRecyclerView.adapter=EmergencyHelpAdapter(requireContext(),ArrayList<String>())
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        navController = Navigation.findNavController(view)
+        binding.arrow.setOnClickListener {
+            navController.popBackStack()
+        }
     }
-
-
 }
