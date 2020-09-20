@@ -16,14 +16,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="36dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginRight="20dp"
+                    android:fontFamily="@font/sen_bold"
                     android:text="Hi Help Vault"
                     android:textColor="@color/textColor"
                     android:textSize="18sp" />
@@ -31,8 +34,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="36dp"
                     android:layout_marginRight="20dp"
+                    android:fontFamily="@font/sen_bold"
                     android:text="Welcome Back"
                     android:textColor="@color/textColor"
                     android:textSize="26sp"
@@ -40,24 +44,27 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
                     android:background="#FFFFFF"
-                    app:cardCornerRadius="8dp">
+                    android:elevation="0dp"
+                    app:cardCornerRadius="12dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginBottom="20dp"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="12dp"
+                            android:layout_marginLeft="20dp"
                             android:layout_marginTop="12dp"
                             android:layout_marginRight="12dp"
+                            android:fontFamily="@font/sen_bold"
                             android:text="Active volunteers around now"
                             android:textColor="@color/textColor"
                             android:textSize="18sp" />
@@ -66,7 +73,7 @@
                             android:id="@+id/total_volunteers"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="12dp"
+                            android:layout_marginLeft="20dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginRight="12dp"
                             android:text="478"
@@ -74,7 +81,7 @@
                             android:textSize="26sp"
                             android:textStyle="bold" />
 
-                        <androidx.cardview.widget.CardView
+                        <RelativeLayout
                             android:id="@+id/emergency_card"
                             android:layout_width="match_parent"
                             android:layout_height="75dp"
@@ -82,9 +89,7 @@
                             android:layout_marginLeft="24dp"
                             android:layout_marginTop="12dp"
                             android:layout_marginRight="24dp"
-                            app:cardBackgroundColor="@color/textColor"
-                            app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp">
+                            android:background="@drawable/card">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -105,9 +110,10 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="20dp"
+                                        android:fontFamily="@font/sen_bold"
                                         android:text="Emergency"
                                         android:textColor="#FFFFFF"
-                                        android:textSize="22sp"
+                                        android:textSize="18sp"
                                         android:textStyle="bold" />
 
                                     <TextView
@@ -116,9 +122,12 @@
                                         android:layout_height="wrap_content"
                                         android:layout_below="@id/emergency_text"
                                         android:layout_marginLeft="20dp"
-                                        android:text="Click to share"
+                                        android:layout_marginTop="4dp"
+                                        android:alpha="0.7"
+                                        android:fontFamily="@font/sen_reg"
+                                        android:text="Click to share location"
                                         android:textColor="#FFFFFF"
-                                        android:textSize="16sp"
+                                        android:textSize="11sp"
                                         android:textStyle="bold" />
                                 </LinearLayout>
 
@@ -141,46 +150,76 @@
 
                             </LinearLayout>
 
-                        </androidx.cardview.widget.CardView>
+                        </RelativeLayout>
 
-                        <LinearLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="24dp"
                             android:layout_marginTop="12dp"
-                            android:layout_marginRight="24dp"
-                            android:orientation="horizontal">
+                            android:layout_marginRight="24dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="24dp"
+                                android:fontFamily="@font/sen_bold"
                                 android:text="Calls for help"
                                 android:textColor="@color/textColor"
                                 android:textSize="18sp" />
 
                             <TextView
-                                android:id="@+id/total_emergency"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
                                 android:layout_marginLeft="16dp"
+                                android:layout_marginRight="32dp"
                                 android:text="4"
                                 android:textColor="@color/textColor"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
-                        </LinearLayout>
+                        </RelativeLayout>
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/emergency_recycler_view"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="24dp"
-                            android:paddingBottom="30dp"
                             android:layout_marginTop="12dp"
-                            tools:itemCount="4"
+                            android:layout_marginRight="24dp"
+                            android:paddingBottom="30dp"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            tools:listitem="@layout/item_view"
-                            android:layout_marginRight="24dp" />
+                            tools:itemCount="4"
+                            tools:listitem="@layout/item_view" />
 
+
+                        <RelativeLayout
+                            android:id="@+id/error"
+                            android:layout_width="match_parent"
+                            android:layout_height="400dp"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/errortxt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:alpha="0.6"
+                                android:fontFamily="@font/sen_bold"
+                                android:paddingLeft="24dp"
+                                android:paddingRight="24dp"
+                                android:text="@string/sample3"
+                                android:textAlignment="center"
+                                android:textSize="16sp" />
+
+                            <ImageView
+                                android:id="@+id/ic_error"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_above="@id/errortxt"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/ic_baseline_error_24" />
+                        </RelativeLayout>
 
                     </LinearLayout>
 

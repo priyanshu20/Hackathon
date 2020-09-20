@@ -13,11 +13,38 @@
             android:layout_height="match_parent"
             android:background="#EAE7E7">
 
+            <RelativeLayout
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:id="@+id/arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="12dp"
+                    android:scaleX="-1"
+                    android:src="@drawable/ic_arrow" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/arrow"
+                    android:fontFamily="@font/sen_bold"
+                    android:text="Back"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="22sp" />
+
+            </RelativeLayout>
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/card"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@id/back"
+                android:layout_below="@id/back"
                 android:layout_margin="20dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp">
@@ -100,11 +127,31 @@
                         android:padding="8dp"
                         android:textSize="14sp" />
 
+                    <TextView
+                        android:id="@+id/kids"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/edit_vol_needed"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/sen_bold"
+                        android:text="For Kids"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="18sp" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/edit_vol_needed"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="12dp"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_above="@id/submit"
-                        android:layout_below="@id/edit_vol_needed"
+                        android:layout_below="@id/kids"
                         android:padding="14dp"
                         android:src="@drawable/ic_men" />
 
@@ -120,34 +167,6 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <RelativeLayout
-                android:id="@+id/back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="20dp">
-
-                <ImageView
-                    android:id="@+id/arrow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="12dp"
-                    android:scaleX="-1"
-                    android:src="@drawable/ic_arrow" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/arrow"
-                    android:fontFamily="@font/sen_bold"
-                    android:text="Back"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="22sp" />
-
-            </RelativeLayout>
         </RelativeLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
