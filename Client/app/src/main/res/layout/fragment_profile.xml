@@ -1,13 +1,295 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#EAE7E7">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="28sp"
+                android:layout_marginRight="28dp">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sen_bold"
+                    android:text="Profile"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="32sp" />
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/ic_side_menu"
+                    android:tintMode="multiply"
+                    app:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title"
+                    android:layout_marginLeft="4dp"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/sen_reg"
+                    android:text="Edit and manage your profile details"
+                    android:textColor="@color/colorPrimary" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/desc"
+                    android:layout_marginTop="32dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/profile_pic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:src="@drawable/ic_man" />
+
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16sp"
+                            android:layout_marginTop="8dp"
+                            android:layout_toRightOf="@id/profile_pic"
+                            android:fontFamily="@font/sen_bold"
+                            android:text="Mike Tyson"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/name"
+                            android:layout_marginLeft="16dp"
+                            android:layout_toRightOf="@id/profile_pic"
+                            android:fontFamily="@font/sen_reg"
+                            android:text="Art director at MX studios"
+                            android:textColor="@color/colorPrimary" />
+
+                        <LinearLayout
+                            android:id="@+id/stats"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/profile_pic"
+                            android:layout_marginTop="24dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/credit_count"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/sen_bold"
+                                    android:text="78"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="28sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/credit_count"
+                                    android:fontFamily="@font/sen_bold"
+                                    android:text="Credits"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.7dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="24dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginRight="24dp"
+                                android:background="#5A5959" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/rating_count"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/sen_bold"
+                                    android:text="4.6"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="28sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/credit_count"
+                                    android:fontFamily="@font/sen_bold"
+                                    android:text="Rating"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.7dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="24dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginRight="24dp"
+                                android:background="#5A5959" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/voluntered_count"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/sen_bold"
+                                    android:text="28"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="28sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/credit_count"
+                                    android:fontFamily="@font/sen_bold"
+                                    android:text="Voluntered"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/bio_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/stats"
+                            android:layout_marginTop="28dp"
+                            android:fontFamily="@font/sen_bold"
+                            android:text="Bio"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp" />
+
+                        <ImageView
+                            android:id="@+id/edit_button"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_below="@id/stats"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_toRightOf="@id/bio_title"
+                            android:src="@drawable/ic_edit" />
+
+                        <TextView
+                            android:id="@+id/bio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/bio_title"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/sen_reg"
+                            android:text="@string/sample"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                        <TextView
+                            android:id="@+id/avail_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/bio"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/sen_bold"
+                            android:text="Availability Status"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="18sp" />
+
+                        <Switch
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/bio"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginRight="12dp"
+                            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_below="@id/avail_title"
+                            android:layout_marginTop="24dp"
+                            android:background="@drawable/gradient_card">
+
+                            <ImageView
+                                android:id="@+id/money_icon"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="12dp"
+                                android:src="@drawable/ic_money" />
+
+                            <TextView
+                                android:id="@+id/redeem_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/sen_bold"
+                                android:text="Redeem Credits"
+                                android:textColor="#ffffff"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/redeem_title"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/sen_reg"
+                                android:layout_toLeftOf="@id/money_icon"
+                                android:text="Get your credits encashed for exclusive stuff"
+                                android:textColor="#ffffff" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                </ScrollView>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

@@ -15,7 +15,7 @@
 
     <item
         android:id="@+id/Settings"
-        android:icon="@drawable/ic_settings"
+        android:icon="@drawable/ic_profile_icon"
         android:iconTint="@color/colorPrimaryDark"
         android:title="Profile" />
 </menu>
