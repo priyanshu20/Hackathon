@@ -42,19 +42,19 @@ class LocationService : Service() {
             if (action != null) when (action) {
                 ACTION_START_FOREGROUND_SERVICE -> {
                     startForegroundService()
-                    Toast.makeText(
-                        applicationContext,
-                        "Foreground service is started.",
-                        Toast.LENGTH_LONG
-                    ).show()
+//                    Toast.makeText(
+//                        applicationContext,
+//                        "Foreground service is started.",
+//                        Toast.LENGTH_LONG
+//                    ).show()
                 }
                 ACTION_STOP_FOREGROUND_SERVICE -> {
                     stopForegroundService()
-                    Toast.makeText(
-                        applicationContext,
-                        "Foreground service is stopped.",
-                        Toast.LENGTH_LONG
-                    ).show()
+//                    Toast.makeText(
+//                        applicationContext,
+//                        "Foreground service is stopped.",
+//                        Toast.LENGTH_LONG
+//                    ).show()
                 }
             }
         }

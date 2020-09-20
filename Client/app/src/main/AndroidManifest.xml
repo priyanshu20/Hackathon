@@ -21,10 +21,10 @@
             android:name=".screen.RegisterActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".screen.LoginActivity"
+            android:name=".screen.MainActivity"
             android:windowSoftInputMode="adjustResize" />
 
-        <activity android:name=".screen.MainActivity">
+        <activity android:name=".screen.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
