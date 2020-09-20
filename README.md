@@ -34,7 +34,7 @@ ui-design link - https://xd.adobe.com/view/bb05bc3e-9e43-4455-a162-51c3f2c3fe46-
  
  <table>
   <tr>
-    <td>Login screen</td>
+    <td>Profile screen</td>
   </tr>
   <tr>
     <td><img src="UI_screens/iPhone X, XS, 11 Pro – 4.png" width=270 height=580></td>
