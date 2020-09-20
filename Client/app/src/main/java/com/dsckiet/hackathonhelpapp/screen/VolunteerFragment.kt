@@ -42,26 +42,21 @@ class VolunteerFragment : Fragment() {
         binding.getVolunteerCard.setOnClickListener {
             navController.navigate(R.id.action_volunteerFragment_to_getVolunteerFragment2)
         }
-
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        val retrofitService=AppNetwork.getClient(requireContext()).getGeneralHelp("priyanshus.edu@gmail.com")
-        retrofitService.enqueue(object: Callback<GeneralHelpResponse>{
+        val retrofitService =
+            AppNetwork.getClient(requireContext()).getGeneralHelp("priyanshus.edu@gmail.com")
+        retrofitService.enqueue(object : Callback<GeneralHelpResponse> {
             override fun onFailure(call: Call<GeneralHelpResponse>, t: Throwable) {
-                Log.d("error",t.message.toString())
+                Log.d("error", t.message.toString())
             }
 
             override fun onResponse(
                 call: Call<GeneralHelpResponse>,
                 response: Response<GeneralHelpResponse>
             ) {
-                Log.d("success",response.toString())
-                if(response.code()==200)
-                {
-                    binding.totalHelp.text=response.body()?.data?.size.toString()
-                    if(response.body()?.data!=null) {
+                Log.d("success", response.toString())
+                if (response.code() == 200) {
+                    binding.totalHelp.text = response.body()?.data?.size.toString()
+                    if (response.body()?.data != null) {
                         binding.recyclerViewGeneral.adapter =
                             GeneralHelpAdapter(requireContext(), response.body()?.data!!)
                     }
@@ -70,5 +65,6 @@ class VolunteerFragment : Fragment() {
 
         })
     }
+
 
 }

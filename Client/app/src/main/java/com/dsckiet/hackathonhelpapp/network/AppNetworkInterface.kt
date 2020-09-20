@@ -1,9 +1,6 @@
 package com.dsckiet.hackathonhelpapp.network
 
-import com.dsckiet.hackathonhelpapp.model.EmergencyResponse
-import com.dsckiet.hackathonhelpapp.model.GeneralHelpResponse
-import com.dsckiet.hackathonhelpapp.model.UpdateUserBody
-import com.dsckiet.hackathonhelpapp.model.UpdateUserResponse
+import com.dsckiet.hackathonhelpapp.model.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -13,13 +10,26 @@ interface AppNetworkInterface {
         @Body updateUserBody: UpdateUserBody
     ): Call<UpdateUserResponse>
 
-@GET("pings/emergency")
-fun getEmergency(
-    @Header("email") email:String
-):Call<EmergencyResponse>
+    @GET("pings/emergency")
+    fun getEmergency(
+        @Header("email") email: String
+    ): Call<EmergencyResponse>
 
     @GET("pings")
     fun getGeneralHelp(
-        @Header("email") email:String
-    ):Call<GeneralHelpResponse>
+        @Header("email") email: String
+    ): Call<GeneralHelpResponse>
+
+    @POST("pings")
+    fun askHelp(
+        @Header("email") email: String,
+        @Body addHelpBody: AddHelpBody
+
+    ): Call<AddHelpResponse>
+
+    @POST("pings")
+    fun askEmergency(
+        @Header("email") email: String,
+        @Body addEmergencyBody: AddEmergencyBody
+    ): Call<AddHelpResponse>
 }

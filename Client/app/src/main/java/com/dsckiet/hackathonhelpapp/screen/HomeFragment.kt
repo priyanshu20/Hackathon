@@ -17,9 +17,12 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import com.dsckiet.hackathonhelpapp.Constants
 import com.dsckiet.hackathonhelpapp.R
 import com.dsckiet.hackathonhelpapp.adapter.EmergencyHelpAdapter
 import com.dsckiet.hackathonhelpapp.databinding.FragmentHomeBinding
+import com.dsckiet.hackathonhelpapp.model.AddEmergencyBody
+import com.dsckiet.hackathonhelpapp.model.AddHelpResponse
 import com.dsckiet.hackathonhelpapp.model.EmergencyResponse
 import com.dsckiet.hackathonhelpapp.network.AppNetwork
 import com.google.android.material.snackbar.Snackbar
@@ -49,20 +52,55 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        binding.helpCard.setOnClickListener {
+            val addEmergencyBody = AddEmergencyBody(
+                latitude = Constants.latitude.toString(),
+                longitude = Constants.longitude.toString(),
+                tag = "emergency"
 
-        val retrofitService=AppNetwork.getClient(requireContext()).getEmergency("priyanshus.edu@gmail.com")
-        retrofitService.enqueue(object :Callback<EmergencyResponse>{
+            )
+            val retrofitService = AppNetwork.getClient(requireContext())
+                .askEmergency("priyanshus.edu@gmail.com", addEmergencyBody)
+            retrofitService.enqueue(
+                object : Callback<AddHelpResponse> {
+                    override fun onFailure(call: Call<AddHelpResponse>, t: Throwable) {
+                        Log.d("failure", t.message.toString())
+                    }
+
+                    override fun onResponse(
+                        call: Call<AddHelpResponse>,
+                        response: Response<AddHelpResponse>
+                    ) {
+                        Log.d("success", response.toString())
+                        if (response.code() == 200) {
+                            Snackbar.make(
+                                binding.coordinatorLayout,
+                                "Volunteer Help Requested",
+                                Snackbar.LENGTH_SHORT
+                            ).show()
+                        }
+
+                    }
+
+                }
+            )
+        }
+
+        val retrofitService =
+            AppNetwork.getClient(requireContext()).getEmergency("priyanshus.edu@gmail.com")
+        retrofitService.enqueue(object : Callback<EmergencyResponse> {
             override fun onFailure(call: Call<EmergencyResponse>, t: Throwable) {
-                Log.d("Error",t.message.toString())
-                Snackbar.make(binding.coordinatorLayout,"Network Problem",Snackbar.LENGTH_SHORT).show()
+                Log.d("Error", t.message.toString())
+                Snackbar.make(binding.coordinatorLayout, "Network Problem", Snackbar.LENGTH_SHORT)
+                    .show()
             }
 
             override fun onResponse(
                 call: Call<EmergencyResponse>,
                 response: Response<EmergencyResponse>
             ) {
-                Log.d("Success",response.toString())
-                if(response.code()==200) {
+                Log.d("Success", response.toString())
+                if (response.code() == 200) {
                     binding.totalEmergency.text = response.body()?.data?.size.toString()
 
 
@@ -70,9 +108,8 @@ class HomeFragment : Fragment() {
                     if (response.body()?.data != null) {
                         binding.emergencyRecyclerView.adapter =
                             EmergencyHelpAdapter(requireContext(), response.body()?.data!!)
-                        if(response.body()?.data?.size!!>0)
-                        {
-                           showNotification()
+                        if (response.body()?.data?.size!! > 0) {
+                            showNotification()
 
                         }
                     }

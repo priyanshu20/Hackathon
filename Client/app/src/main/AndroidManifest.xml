@@ -22,7 +22,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".screen.MainActivity"
-            android:windowSoftInputMode="adjustResize" />
+            />
 
         <activity android:name=".screen.LoginActivity">
             <intent-filter>
