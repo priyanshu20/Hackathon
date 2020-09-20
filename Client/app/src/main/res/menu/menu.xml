@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_opt1"
         android:enabled="true"
         android:title="Home" />
 
     <item
-        android:id="@+id/list"
+        android:id="@+id/volunteerFragment"
         android:iconTint="@color/colorPrimaryDark"
         android:icon="@drawable/ic_group_8"
         android:title="List" />
 
     <item
-        android:id="@+id/Settings"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile_icon"
         android:iconTint="@color/colorPrimaryDark"
         android:title="Profile" />

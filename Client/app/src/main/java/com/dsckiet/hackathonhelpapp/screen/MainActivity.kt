@@ -4,14 +4,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.dsckiet.hackathonhelpapp.R
 import com.dsckiet.hackathonhelpapp.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    lateinit var homefragment: HomeFragment
-    lateinit var volFragment: VolunteerFragment
-    lateinit var profileFragment: ProfileFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,37 +25,9 @@ class MainActivity : AppCompatActivity() {
 
     fun bottomNav() {
 
-        binding.bottomNav.setOnNavigationItemReselectedListener { item ->
+        val bottomNav=findViewById<BottomNavigationView>(R.id.bottom_nav)
+        val navController=findNavController(R.id.fragment)
+        bottomNav.setupWithNavController(navController)
 
-            when (item.itemId) {
-
-                R.id.home -> {
-                    homefragment = HomeFragment()
-                    supportFragmentManager
-                        .beginTransaction()                                            //shows Home fragment
-                        .replace(R.id.fragment, homefragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
-                }
-                R.id.list -> {
-                    volFragment = VolunteerFragment()
-                    supportFragmentManager
-                        .beginTransaction()                                            //shows List fragment
-                        .replace(R.id.fragment, volFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
-                }
-                R.id.Settings -> {
-
-                    profileFragment = ProfileFragment()
-                    supportFragmentManager
-                        .beginTransaction()                                            //shows Profile fragment
-                        .replace(R.id.fragment, profileFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
-                }
-            }
-            true
-        }
     }
 }
