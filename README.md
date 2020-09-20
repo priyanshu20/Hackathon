@@ -8,12 +8,21 @@ ui-design link - https://xd.adobe.com/view/bb05bc3e-9e43-4455-a162-51c3f2c3fe46-
 
 <table>
   <tr>
+    <td>Thumbnail</td>
+  </tr>
+  <tr>
+    <td><img src="UI_screens/Web 1920 – 1.svg" width=863 height=490></td>
+  </tr>
+ </table>
+
+<table>
+  <tr>
     <td>Login screen</td>
      <td>Home screen</td>
      <td>Home screen when offline</td>
   </tr>
   <tr>
-    <td><img src="UI_screens/iPhone X, XS, 11 Pro – 1.png" width=270 height=580></td>
+    <td><img src="UI_screens/login.png" width=270 height=580></td>
     <td><img src="UI_screens/iPhone X, XS, 11 Pro – 2.png" width=270 height=580></td>
     <td><img src="UI_screens/iPhone X, XS, 11 Pro – 7.png" width=270 height=580></td>
   </tr>
